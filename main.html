@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <meta charset="UTF-8">
+	  	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>Главная</title>
+</head>
+<body>
+	<header class="box">
+		<div class="menu">
+			<div class="logo">
+				<a href="main.html">NIKITA 4PROCENT</a>
+			</div>
+			<nav>	
+					<a href="comanda.html" target="blank" class="wow zoomIn" >Команда</a>
+					<a href="index3.html" target="blank" class="wow zoomIn" >Магазин</a>
+					<a href="index6.html" target="blank" class="wow zoomIn" >Контакты</a>
+					<a href="" target="blank" class="wow zoomIn" >FAQ</a>
+			</nav>	
+		</div>
+	</header>
+<div class="header-welcome">
+	<div class="header-big-text">
+		<h1 class="header-text">Добро пожаловать!</h1>
+		<h2 class="header-opis">В нашем магазине вы можете купить дизайнерскую одежду<br> от молодых дизайнеров которые учатся в<br> Британской Высшей Школе Дизайна!</h2>
+	</div>
+</div>
+<div class="onas">
+	<h2 class="onas-header-text">О нас</h2>
+	<h3 class="onas-opis">Мы учимся в британской высшей школе дизайна и<br> поэтому дизайн нашшей одежды является креативным<br> а цены размеренными так как мы сами студенты и понимаем сколько<br> реально адекватно потратить на одежду. Так же вы можете узнать контакты каждого из нашей<br> команды <a href="">здесь</a>. Также на каждой карточке в магазине написано чей это дизайн и из какой колекции.<br> Если вы хотите получать эксклюзивную информацию, то введите ниже вашу почту и каждую неделю туда<br> будет приходить письмо со скидками и приятными новостями.</h3>
+	<input type="email" name="email" placeholder="Введите вашу почту" class="onas-input">
+	<button class="onas-email-send">Получить эксклюзивную информацию</button>
+</div>
+<div class="timer">
+				<h1 class="timer-header">До нового дропа вещей осталось:</h1>
+				<div class="timer_item">
+					<span class="timer-number" id="timer-days"></span>
+					<span id="timer-days-text"> Дни</span>
+				</div>
+				<div class="timer_item">
+					<span class="timer-number" id="timer-hours"></span>
+					<span id="timer-hours-text">Часы</span>
+				</div>
+
+				<div class="timer_item">
+					<span class="timer-number" id="timer-minutes"></span>
+					<span id="timer-minutes-text"> Минуты</span>
+				</div>
+				<div class="timer_item">
+					<span class="timer-number" id="timer-seconds"></span>
+					<span id="timer-seconds-text"> Секунды</span>
+				</div>
+			</div>
+<script>
+	var decCache = [],
+	decCases = [2, 0, 1, 1, 1, 2];
+
+function decOfNum(number, titles) {
+	 decCache[number] = (number % 100 > 4 && number % 100 < 20) ? 2 : decCases[Math.min(number % 10, 5)];
+	return titles[decCache[number]];
+}
+
+function timerLeft(year,month,day) {
+	setInterval(function(){
+var	hoursNumber = document.getElementById('timer-hours'),
+minutesNumber = document.getElementById('timer-minutes'),
+secondsNumber = document.getElementById('timer-seconds'),
+hoursText = document.getElementById('timer-hours-text'),
+minutesText = document.getElementById('timer-minutes-text'),
+secondsText = document.getElementById('timer-seconds-text'),
+daysNumber = document.getElementById('timer-days')
+daysText = document.getElementById('timer-days-text')
+dateNow =  new Date(),
+dateFinish = new Date(year,month,day),
+sec = Math.floor((dateFinish - dateNow) / 1000),
+secToMin = sec % 3600,
+secToDay = sec % 86400,
+daysT = Math.floor(sec/86400),
+hoursT = Math.floor(secToDay/3600),
+minutesT = Math.floor(secToMin/60),
+secondsT = secToMin % 60;
+hoursNumber.innerHTML = hoursT;
+minutesNumber.innerHTML = minutesT;
+secondsNumber.innerHTML = secondsT;
+daysNumber.innerHTML = daysT;
+hoursText.innerHTML = decOfNum(hoursT,['Час','Часа','Часов']);
+minutesText.innerHTML = decOfNum(minutesT,['Минута','Минуты','Минут'] );
+secondsText.innerHTML = decOfNum(secondsT,['Секунда','Секунды','Секунд'] );
+daysText.innerHTML = decOfNum(secToDay,['День','Дня','Дней']);
+
+})
+}
+timerLeft(2020,5,15);
+</script>
+</body>
+</html>
